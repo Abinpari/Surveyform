@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BedfordSireUniMap - Heuristic Evaluation Survey</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --background-light: #ecf0f1;
+            --text-color: #333;
+            --accent-color: #3498db;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-light);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .survey-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .survey-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .survey-header h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .survey-header p {
+            color: var(--secondary-color);
+            font-size: 1rem;
+        }
+
+        .question-group {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid #e1e8ed;
+        }
+
+        .question {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .question:hover {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .radio-group input[type="radio"] {
+            margin-right: 8px;
+            accent-color: var(--accent-color);
+        }
+
+        .radio-group input[type="radio"]:checked + label {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .category-tag {
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .optional-section {
+            background-color: #f1f4f8;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        textarea, input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #d1d8e0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="survey-container">
+        <div class="survey-header">
+            <h1>Heuristic Evaluation Survey</h1>
+            <p>BedfordSireUniMap Application</p>
+        </div>
+
+        <form id="heuristicEvaluationForm" action="response-page.html" method="POST">
+            <div class="question-group">
+                <div class="question">
+                    <label>1. Is the current system state clearly visible to users?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="q1_yes" name="system_visibility" value="Yes" required>
+                        <label for="q1_yes">Yes</label>
+                        <input type="radio" id="q1_no" name="system_visibility" value="No">
+                        <label for="q1_no">No</label>
+                    </div>
+                    <div class="category-tag">Category: System Visibility</div>
+                </div>
+
+                <div class="question">
+                    <label>2. Do users have adequate control over system interactions?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="q2_yes" name="user_control" value="Yes" required>
+                        <label for="q2_yes">Yes</label>
+                        <input type="radio" id="q2_no" name="user_control" value="No">
+                        <label for="q2_no">No</label>
+                    </div>
+                    <div class="category-tag">Category: User Control</div>
+                </div>
+
+                <div class="question">
+                    <label>3. Does the system effectively prevent potential user errors?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="q3_yes" name="error_prevention" value="Yes" required>
+                        <label for="q3_yes">Yes</label>
+                        <input type="radio" id="q3_no" name="error_prevention" value="No">
+                        <label for="q3_no">No</label>
+                    </div>
+                    <div class="category-tag">Category: Error Prevention</div>
+                </div>
+
+                <div class="question">
+                    <label>4. Is the interface design intuitive and easy to recognize?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="q4_yes" name="recognition_recall" value="Yes" required>
+                        <label for="q4_yes">Yes</label>
+                        <input type="radio" id="q4_no" name="recognition_recall" value="No">
+                        <label for="q4_no">No</label>
+                    </div>
+                    <div class="category-tag">Category: Recognition vs Recall</div>
+                </div>
+
+                <div class="question">
+                    <label>5. Is the system visually appealing and professionally designed?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="q5_yes" name="aesthetic_design" value="Yes" required>
+                        <label for="q5_yes">Yes</label>
+                        <input type="radio" id="q5_no" name="aesthetic_design" value="No">
+                        <label for="q5_no">No</label>
+                    </div>
+                    <div class="category-tag">Category: Aesthetic Design</div>
+                </div>
+            </div>
+
+            <div class="optional-section">
+                <label>Additional Comments (Optional)</label>
+                <textarea name="additional_comments" rows="4" placeholder="Share your detailed observations..."></textarea>
+
+                <label style="margin-top: 15px;">Your Name (Optional)</label>
+                <input type="text" name="participant_name" placeholder="Enter your name">
+
+                <label style="margin-top: 15px;">Your Email (Optional)</label>
+                <input type="email" name="participant_email" placeholder="Enter your email">
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('heuristicEvaluationForm').addEventListener('submit', function(event) {
+            const requiredQuestions = document.querySelectorAll('[required]');
+            let allQuestionsAnswered = true;
+
+            requiredQuestions.forEach(question => {
+                const questionGroup = document.getElementsByName(question.name);
+                const isAnswered = Array.from(questionGroup).some(radio => radio.checked);
+                
+                if (!isAnswered) {
+                    allQuestionsAnswered = false;
+                    questionGroup[0].closest('.question').style.borderColor = 'red';
+                }
+            });
+
+            if (!allQuestionsAnswered) {
+                event.preventDefault();
+                alert('Please answer all required questions before submitting.');
+            }
+        });
+    </script>
+</body>
+</html>
